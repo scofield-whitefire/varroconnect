@@ -1,30 +1,18 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
   <router-view/>
+  <!-- <Teleport to="#appName">
+    Varro Wallet Connect
+  </Teleport> -->
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  @import "assets/varro/css/bootstrap.min.css";
+  @import "assets/varro/css/animate.css";
+  @import "assets/varro/css/swiper.min.css";
+  @import "assets/varro/css/icons.css";
+  @import "assets/varro/css/aos.css";
+  @import "assets/varro/css/custom-dialog.css";
+  @import "assets/varro/css/main.css";
+  @import "assets/varro/css/normalize.css";
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
