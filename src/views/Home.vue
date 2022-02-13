@@ -13,7 +13,7 @@
               <div class="col-md-8 col-lg-6">
                 <div class="banner_title">
                   <h1 class="margin-b-2">
-                    <span class="c-orange2">Lukky</span> Wallet Connect.
+                    <span class="c-orange2">Varro</span> Wallet Connect.
                   </h1>
                   <p class="c-dark">An Open Source protocol for connecting Wallets to Dapps.
                   </p>
