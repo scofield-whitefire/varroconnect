@@ -3155,7 +3155,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/img/rakon/curve.png");
+  background-image: url("../img/rakon/curve.png");
   background-repeat: no-repeat;
   opacity: 0.3;
   background-size: 100%;
@@ -3370,7 +3370,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/img/rakon/curve.png");
+  background-image: url("../img/rakon/curve.png");
   background-repeat: no-repeat;
   opacity: 0.3;
   background-size: 100%;
@@ -3563,7 +3563,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/img/rakon/curve.png");
+  background-image: url("../img/rakon/curve.png");
   background-repeat: no-repeat;
   opacity: 0;
   background-size: 100%;
@@ -4011,7 +4011,7 @@ html:not(.no-js) [data-aos="fade-up"] {
 }
 .banner_theme .vr_2 .img_two::before {
   content: "";
-  background: url("/img/rakon/blur.png");
+  background: url("../img/rakon/blur.png");
   background-repeat: no-repeat;
   width: 100%;
   position: absolute;
@@ -5399,7 +5399,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
   left: 40%;
   width: 123px;
   height: 123px;
-  background-image: url("/img/best.png");
+  background-image: url("../img/best.png");
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 5;
@@ -5478,7 +5478,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
   banner_demo6
 -----------------------------*/
 .banner_demo6 {
-  background-image: url("/img/hosting/bg-hosting.png") !important;
+  background-image: url("../img/hosting/bg-hosting.png") !important;
   background-size: cover !important;
   width: 100%;
   height: 100% !important;
@@ -5840,7 +5840,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
 }
 .demo__software::before {
   content: "";
-  background-image: url("/img/software/bg-soft.png");
+  background-image: url("../img/software/bg-soft.png");
   background-repeat: no-repeat;
   background-size: 100%;
   position: absolute;
@@ -6085,7 +6085,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/img/workspace/bg-about.png");
+  background-image: url("../img/workspace/bg-about.png");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position-y: 120%;
@@ -6261,7 +6261,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
 -----------------------------*/
 .banner_blog_inner {
   position: relative;
-  background-image: url("/img/inner/647.png");
+  background-image: url("../img/inner/647.png");
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
@@ -6361,7 +6361,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
 -----------------------------*/
 .banner_app_two {
   position: relative;
-  background: url("/img/app/00000.png");
+  background: url("../img/app/00000.png");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -6853,7 +6853,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
 }
 .integration__logo .block__circle::before {
   content: "";
-  background-image: url("/img/software/bg-logo.png");
+  background-image: url("../img/software/bg-logo.png");
   width: 100%;
   height: 685px;
   position: absolute;
@@ -7764,7 +7764,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
   width: 100%;
   height: 100%;
   background-size: 100%;
-  background-image: url("/img/workspace/serv_abstract.png");
+  background-image: url("../img/workspace/serv_abstract.png");
   background-repeat: no-repeat;
   bottom: 0;
   left: -7%;
@@ -8416,7 +8416,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
 }
 .features_hosting:before {
   content: "";
-  background-image: url("/img/hosting/14301.png");
+  background-image: url("../img/hosting/14301.png");
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -9044,7 +9044,7 @@ header .navbar .navbar-collapse .nav_account.btn_demo3 .btn_sm_primary {
   position: absolute;
   bottom: -2px;
   z-index: 2;
-  background-image: url("/img/software/gradient.png");
+  background-image: url("../img/software/gradient.png");
   background-repeat: no-repeat;
 }
 @media (max-width: 991px) {
@@ -11535,7 +11535,7 @@ software_web
   gbo_contact
 -----------------------------*/
 .gbo_contact {
-  background-image: url("/img/0987.jpg");
+  background-image: url("../img/0987.jpg");
   background-repeat: no-repeat;
   width: 100%;
   position: relative;
@@ -11575,7 +11575,7 @@ software_web
 }
 .need_help_sec .block_help:before {
   content: "";
-  background-image: url("/img/hosting/light.png");
+  background-image: url("../img/hosting/light.png");
   background-repeat: no-repeat;
   background-size: 140%;
   position: absolute;
@@ -11661,7 +11661,7 @@ software_web
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/img/workspace/bg-about.png");
+  background-image: url("../img/workspace/bg-about.png");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 50% 50%;
@@ -12872,7 +12872,7 @@ software_web
   section_account
 -----------------------------*/
 .section_account .fixed_side_data {
-  background: url("/img/signup.png");
+  background: url("../img/signup.png");
   background-repeat: no-repeat;
   position: fixed;
   left: 0;
@@ -12953,7 +12953,7 @@ software_web
   display: grid;
   -ms-flex-align: center;
   align-items: center;
-  background-image: url("/img/inner/01.jpg");
+  background-image: url("../img/inner/01.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -13059,7 +13059,7 @@ software_web
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/img/workspace/bg-about.png");
+  background-image: url("../img/workspace/bg-about.png");
   background-size: 100%;
   background-position-y: 90%;
   position: fixed;
@@ -21522,7 +21522,7 @@ html:not(.no-js) [data-aos="fade-up"] {
 }
 .foot_demo2:before {
   content: "";
-  background: url("/img/hosting/01.png");
+  background: url("../img/hosting/01.png");
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;

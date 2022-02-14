@@ -7,7 +7,7 @@
               <div class="email_logo">
                 <div class="media">
                   <router-link :to="{ name: 'Home' }" class="brand_logo my-auto">
-                    <img src="https://orinostudio.com/rakon-theme/assets/img/logo.svg" alt="">
+                    <img src="../assets/varro/logo.png" alt="">
                   </router-link>
                   <div class="media-body my-auto">
                     <div class="txt">

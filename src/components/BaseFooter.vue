@@ -40,7 +40,7 @@
     <!-- Start Section Loader -->
     <section class="loading_overlay">
       <div class="loader_logo">
-        <img class="logo" src="https://orinostudio.com/rakon-theme/assets/img/logo.svg" />
+        <img class="logo" src="../assets/varro/logo.png" />
       </div>
     </section>
     <!-- End. Loader -->

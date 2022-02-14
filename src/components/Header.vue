@@ -13,7 +13,7 @@
           <!-- navbar -->
           <nav class="navbar navbar-expand-lg navbar-light px-sm-0">
             <router-link :to="{ name: 'Home' }" class="navbar-brand">
-              <img class="logo" src="https://orinostudio.com/rakon-theme/assets/img/logo.svg" alt="logo" />
+              <img class="logo" src="../assets/varro/logo.png" alt="logo" />
             </router-link>
 
             <button class="navbar-toggler menu ripplemenu" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
