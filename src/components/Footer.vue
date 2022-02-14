@@ -12,8 +12,8 @@
                   <div class="media-body my-auto">
                     <div class="txt">
                       <span>Neet help? Contact us at</span>
-                      <a href="mailto:info@varrowalletconnect.com">
-                        info@varrowalletconnect.com
+                      <a href="mailto:info@varroconnect.com">
+                        info@varroconnect.com
                       </a>
                     </div>
                   </div>

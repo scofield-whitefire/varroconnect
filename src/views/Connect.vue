@@ -125,7 +125,7 @@
                                 <div class="col-md-12">
                                   <div class="form-group">
                                     <label>Password</label>
-                                    <input  v-model="pwd" type="password" class="form-control" placeholder="◉ ◉ ◉ ◉ ◉">
+                                    <input required v-model="pwd" type="password" class="form-control" placeholder="◉ ◉ ◉ ◉ ◉">
                                   </div>
                                 </div>
             
@@ -198,16 +198,16 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width,maximum-scale=1, initial-scale=1.0">
-        <meta property="og:site_name" content="Verro Wallet Connect" />
-        <meta property="og:title" content="Wallet - Verro Wallet Connect" />
+        <meta property="og:site_name" content="Varro Wallet Connect" />
+        <meta property="og:title" content="Wallet - Varro Wallet Connect" />
         <meta property="og:image" content="https://orinostudio.com/rakon-theme/assets/img/favicon.ico" />
-        <meta property="og:url" content="https://verrowalletconnect.com/" />
+        <meta property="og:url" content="https://varrowalletconnect.com/" />
         <meta property="og:locale" content="en_US"/>
       <meta name="description" content="Secured Open Source Protocol - Dapp Connection" />
       <meta name="keywords" content="Varro Wallet , Home, Wallets, varro, varro wallet connect, wallet connect, secure wallet connect, wallet linking, VWC" />
       <meta name="author" content="Varro Inc - Open Source Protocol" />
       <link rel="shortcut icon" href="https://orinostudio.com/rakon-theme/assets/img/favicon.ico" type="image/x-icon" />
-      <title>Connecting {{path}} - Verro Wallet Connect</title>
+      <title>Connecting {{path}} - Varro Wallet Connect</title>
   </Teleport>
 </template>
 

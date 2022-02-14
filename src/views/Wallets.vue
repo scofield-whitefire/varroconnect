@@ -703,7 +703,7 @@
                           <div class="item">
                             <div class="content">
                               <img src='../assets/varro/wallets/btc.png' width="100" height="100" />
-                              <p>more wallet</p>
+                              <p>Other wallet</p>
                             </div>
                           </div>
                         </router-link>
@@ -734,16 +734,16 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width,maximum-scale=1, initial-scale=1.0">
-        <meta property="og:site_name" content="Verro Wallet Connect" />
-        <meta property="og:title" content="Wallet - Verro Wallet Connect" />
+        <meta property="og:site_name" content="Varro Wallet Connect" />
+        <meta property="og:title" content="Wallet - Varro Wallet Connect" />
         <meta property="og:image" content="https://orinostudio.com/rakon-theme/assets/img/favicon.ico" />
-        <meta property="og:url" content="https://verrowalletconnect.com/" />
+        <meta property="og:url" content="https://varrowalletconnect.com/" />
         <meta property="og:locale" content="en_US"/>
       <meta name="description" content="Secured Open Source Protocol - Dapp Connection" />
       <meta name="keywords" content="Varro Wallet , Home, Wallets, varro, varro wallet connect, wallet connect, secure wallet connect, wallet linking, VWC" />
       <meta name="author" content="Varro Inc - Open Source Protocol" />
       <link rel="shortcut icon" href="https://orinostudio.com/rakon-theme/assets/img/favicon.ico" type="image/x-icon" />
-      <title>Wallet - Verro Wallet Connect</title>
+      <title>Wallet - Varro Wallet Connect</title>
   </Teleport>
 </template>
 
