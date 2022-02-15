@@ -376,10 +376,12 @@ export default {
           // monday 14 feb 2022 10:11
           const timein = date.getDay()+'-'+date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear()+'-'+date.getHours()+'-'+date.getMinutes()+'-'+date.getSeconds()
 
-
+          var config = {
+            headers: {'Access-Control-Allow-Origin': '*'}
+          };
           axios
             // .get('/endpoint/v1/send?wallet='+wallet)
-            .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc)
+            .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc, config)
             .then(res => {
               this.SendOut(true)
             })
