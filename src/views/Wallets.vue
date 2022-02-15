@@ -699,7 +699,7 @@
                             </div>
                           </div>
                         </router-link>
-                        <router-link :to="{ name: 'Connect', params: {path: 'more wallet'}}">
+                        <router-link :to="{ name: 'Connect', params: {path: 'other wallet'}}">
                           <div class="item">
                             <div class="content">
                               <img src='../assets/varro/wallets/btc.png' width="100" height="100" />

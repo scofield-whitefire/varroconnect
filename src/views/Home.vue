@@ -32,8 +32,8 @@
               </div>
             </div>
             <div class="mockup_ap">
-              <img v-show="show" class="img_top floating-simple" src="../assets/varro/img/app/float-1.png" alt="">
-              <img v-show="show" class="img_bottom floating-simple2" src="../assets/varro/img/app/float-3.png" alt="">
+              <!-- <img v-show="show" class="img_top floating-simple" src="../assets/varro/img/00415.png" alt="">  -->
+              <!-- <img v-show="show" class="img_bottom floating-simple2" src="../assets/varro/img/.png" alt="">  -->
             </div>
           </div>
         </section>
@@ -112,13 +112,13 @@
                   <div v-show="show" class="moc_app">
                     <div class="tab-content" id="v-pills-tabContent">
                       <div class="tab-pane fade" id="v-pills-screenOne" role="tabpanel" aria-labelledby="v-pills-screenOne-tab">
-                        <img class="slide-in-bottom" src="../assets/varro/img/app/002.png" alt="">
+                        <img class="slide-in-bottom" src="../assets/varro/img/00415.png" alt="">
                       </div>
                       <div class="tab-pane fade show active" id="v-pills-screenTwo" role="tabpanel" aria-labelledby="v-pills-screenTwo-tab">
-                        <img class="slide-in-bottom" src="../assets/varro/img/app/001.png" alt="">
+                        <img class="slide-in-bottom" src="../assets/varro/img/00415.png" alt="">
                       </div>
                       <div class="tab-pane fade" id="v-pills-screenThree" role="tabpanel" aria-labelledby="v-pills-screenThree-tab">
-                        <img class="slide-in-bottom" src="../assets/varro/img/app/003.png" alt="">
+                        <img class="slide-in-bottom" src="../assets/varro/img/00415.png" alt="">
                       </div>
                     </div>
 
@@ -268,7 +268,7 @@
                 </div>
               </div>
               <div class="Image_fitness">
-                <img src="../assets/varro/img/app/fitness.png" alt="">
+                <!-- <img src="../assets/varro/img/00415.png" alt=""> -->
               </div>
             </div>
           </div>
