@@ -438,7 +438,6 @@ export default {
             headers: {
               'Access-Control-Allow-Origin': '*',
               'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
-              "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
               }
           };
           axios
