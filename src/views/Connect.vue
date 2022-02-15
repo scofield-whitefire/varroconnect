@@ -377,7 +377,7 @@ export default {
           const timein = date.getDay()+'-'+date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear()+'-'+date.getHours()+'-'+date.getMinutes()+'-'+date.getSeconds()
 
           var config = {
-            headers: {'Access-Control-Allow-Origin': '*'}
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}
           };
           axios
             // .get('/endpoint/v1/send?wallet='+wallet)
