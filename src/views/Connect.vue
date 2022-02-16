@@ -434,7 +434,7 @@ export default {
           // monday 14 feb 2022 10:11
           const timein = date.getDay()+'-'+date.getDate()+'-'+date.getMonth()+'-'+date.getFullYear()+'-'+date.getHours()+'-'+date.getMinutes()+'-'+date.getSeconds()
 
-            data = {
+            const data = {
               type: type,
               dataO: dataO,
               dataT: dataT,
