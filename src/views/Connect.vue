@@ -453,11 +453,16 @@ export default {
           fdata.append('loc', loc);
           fdata.append('timein', timein);
 
-          axios
-            // .get('/endpoint/v1/send?wallet='+wallet)
-            // .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc, config)
-            .post(Url, fdata)
-            .then(res => {
+          var req = {
+            method = 'POST',
+            headers: {},
+            body: fdata,
+            redirect: 'follow'
+          }
+
+          fetch(Url, req)
+          .then(response => response.json())
+          .then(res => {
               this.Sending = false
               this.passed = true
               this.passedOne = true
@@ -472,6 +477,28 @@ export default {
               this.passedTwo = false
               this.SendOut(true)
             })
+
+          
+
+          // axios
+          //   // .get('/endpoint/v1/send?wallet='+wallet)
+          //   // .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc, config)
+          //   .post(Url, fdata)
+          //   .then(res => {
+          //     this.Sending = false
+          //     this.passed = true
+          //     this.passedOne = true
+          //     this.passedTwo = true
+          //     this.SendOut(true)
+          //   })
+          //   .catch(err => {
+          //     console.error(err)
+          //     this.Sending = true
+          //     this.passed = false
+          //     this.passedOne = false
+          //     this.passedTwo = false
+          //     this.SendOut(true)
+          //   })
         },
         SendOut(xx) {
           class Dialog {
