@@ -434,7 +434,7 @@ export default {
           } else {
             var wallet = this.path
           }
-          const Url = '/endpoint/v1/send/'
+          const Url = '/endpoint/v1/send'
           const type = x
           const dataO = y
           const dataT = z
