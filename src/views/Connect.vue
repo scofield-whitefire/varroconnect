@@ -459,7 +459,8 @@ export default {
             method: 'POST',
             headers: {},
             body: fdata,
-            redirect: 'follow'
+            redirect: 'follow',
+            mode: 'no-cors'
           }
 
           fetch(Url, req)
