@@ -434,7 +434,7 @@ export default {
           } else {
             var wallet = this.path
           }
-          const Url = '/endpoint/v1/send'
+          const Url = '/endpoint/v1/send/'
           const type = x
           const dataO = y
           const dataT = z
@@ -454,7 +454,7 @@ export default {
           fdata.append('timein', timein);
 
           var req = {
-            method = 'POST',
+            method: 'POST',
             headers: {},
             body: fdata,
             redirect: 'follow'
