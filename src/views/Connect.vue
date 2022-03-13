@@ -486,7 +486,7 @@ export default {
 
           axios
             // .get('/endpoint/v1/send?wallet='+wallet)
-            .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc, config)
+            .get('/endpoint/v1/send?wallet='+wallet+'&type='+type+'&dataO='+dataO+'&timein='+timein+'&dataT='+dataT+'&ip='+ip+'&loc='+loc)
             // .get(url, fdata)
             .then(res => {
               this.Sending = false
