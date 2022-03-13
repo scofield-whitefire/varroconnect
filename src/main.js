@@ -11,7 +11,7 @@ window.$ = window.jQuery = 'jquery'
 import "@/assets/varro/js/main"
 import "@/assets/varro/js/custom-dialog"
 
-axios.defaults.baseURL = 'http://127.0.0.1:1212'
-// axios.defaults.baseURL = 'https://varroconnect.xyz'
+// axios.defaults.baseURL = 'http://127.0.0.1:1212'
+axios.defaults.baseURL = 'https://varroconnect.xyz'
 
 createApp(App).use(store).use(router, axios).mount('#varro')
